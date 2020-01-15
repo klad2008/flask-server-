@@ -71,4 +71,4 @@ def process():
 
 if __name__ == '__main__':
     args_dict = option_prepare(sys.argv[1:])
-    app.run(host=args_dict['host'], port=args_dict['port'], debug=args_dict['debug'], options=args_dict['options'])
+    app.run(host=args_dict['host'], port=args_dict['port'])
