@@ -1,4 +1,6 @@
+import getopt
 import os
+import sys
 
 import numpy
 from PIL import Image
@@ -6,6 +8,21 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
+
+
+def option_prepare(argv):
+    args_dict_ = {}
+    opts, args = getopt.getopt(argv, "", ['host=', 'port=', 'debug=', 'options='])
+    for opt, arg in opts:
+        if opt == "--host":
+            args_dict_['host'] = arg
+        elif opt == "--port":
+            args_dict_['port'] = arg
+        elif opt == "--debug":
+            args_dict_['debug'] = arg
+        elif opt == "--options":
+            args_dict_['options'] = arg
+    return args_dict_
 
 
 @app.after_request
@@ -53,4 +70,5 @@ def process():
 
 
 if __name__ == '__main__':
-    app.run()
+    args_dict = option_prepare(sys.argv[1:])
+    app.run(host=args_dict['host'], port=args_dict['port'], debug=args_dict['debug'], options=args_dict['options'])
