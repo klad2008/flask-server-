@@ -2,12 +2,23 @@ import getopt
 import os
 import sys
 
-import numpy
 from PIL import Image
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
+
+sourceA_index = '1'
+sourceA_path = 'static/image_fusion/animalsA/1.jpg'
+img = Image.open(sourceA_path)
+img.save('static/source-image-fusion-1.jpg')
+sourceB_index = '1'
+sourceB_path = 'static/image_fusion/animalsB/1.jpg'
+img = Image.open(sourceB_path)
+img.save('static/source-image-fusion-2.jpg')
+target_path = 'static/image_fusion/animalsC/1-1.jpg'
+img = Image.open(target_path)
+img.save('static/target-image-fusion-1-2.jpg')
 
 
 def option_prepare(argv):
@@ -48,6 +59,11 @@ def style_transefer():
     return render_template('style-transfer.html')
 
 
+@app.route('/segmentation.html')
+def segmentation():
+    return render_template('segmentation.html')
+
+
 @app.route('/matting.html')
 def matting():
     return render_template('matting.html')
@@ -80,7 +96,26 @@ def style_transfer_process():
 
 @app.route('/image-fusion-process', methods=['post'])
 def image_fusion_process():
+    global sourceA_index, sourceB_index
     print(request.form)
+    if request.form.get('image-fusion-source1') is not None and request.form["image-fusion-source1"] != '':
+        sourceA_pic = request.form["image-fusion-source1"]
+        sourceA_path = 'static/image_fusion/animalsA/' + sourceA_pic
+        sourceA_index = sourceA_pic.split('.')[0]
+        img = Image.open(sourceA_path)
+        img.save('static/source-image-fusion-1.jpg')
+    if request.form.get('image-fusion-source2') is not None and request.form["image-fusion-source2"] != '':
+        sourceB_pic = request.form["image-fusion-source2"]
+        sourceB_path = 'static/image_fusion/animalsB/' + sourceB_pic
+        sourceB_index = sourceB_pic.split('.')[0]
+        img = Image.open(sourceB_path)
+        img.save('static/source-image-fusion-2.jpg')
+    if request.form.get('fusion') is not None and request.form.get('fusion') != '':
+        target_pic = sourceA_index + '-' + sourceB_index + '.jpg'
+        target_path = 'static/image_fusion/animalsC/' + target_pic
+        img = Image.open(target_path)
+        img.save('static/target-image-fusion-1-2.jpg')
+    print('okk')
     return render_template('image-fusion.html')
 
 

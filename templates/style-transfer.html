@@ -2,8 +2,13 @@
 <html lang="en">
 
 <style>
-    #body_d{
-        background: #f1f6f4 url({{ url_for('static', filename='header-image.jpg')}}) no-repeat center;
+    #main{
+        position:relative;
+        background-color: #f1f6f4;
+        background-image: url({{ url_for('static', filename='header-image.jpg')}});
+        background-repeat : no-repeat;
+        background-position: center;
+        background-size: cover;
     }
     #div_title_text{
         color:#6c7588;
@@ -116,8 +121,8 @@ window.onload=function(){
     <meta charset="UTF-8">
     <title>test</title>
 </head>
-<body id="body_d">
-
+<body>
+<div id="main">
 <div id="div_title_text">
 功能演示
 </div>
@@ -136,7 +141,6 @@ window.onload=function(){
     <option value="painting">painting</option>
     <option value="sculpture">sculpture</option>
 </select>
-
 <br>
 
 <form style="text-align:center" action="style-transfer-process" method="post">
@@ -227,6 +231,6 @@ window.onload=function(){
         <br>
         <input type="file" onchange="this.form.submit()" name="source">
     </div>
-    <div>
-    </div>
 </form>
+</div>
+</body>
