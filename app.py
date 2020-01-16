@@ -40,33 +40,48 @@ def add_header(r):
 
 @app.route('/')
 def main():
-    return render_template('main.html')
+    return render_template('style-transfer.html')
 
 
-@app.route('/up_source', methods=['post'])
-def up_source():
-    print(request.files)
-    img = request.files.get('photo')
-    img.save('static/source.png')
-    return render_template('main.html')
+@app.route('/style-transfer.html')
+def style_transefer():
+    return render_template('style-transfer.html')
 
 
-@app.route('/up_style', methods=['post'])
-def up_style():
-    print(request.files)
-    img = request.files.get('photo')
-    img.save('static/style.png')
-    return render_template('main.html')
+@app.route('/matting.html')
+def matting():
+    return render_template('matting.html')
 
 
-@app.route('/process')
-def process():
-    img = Image.open('static/style.png')
-    img_numpy = numpy.array(img)
-    img_numpy = 255 - img_numpy
-    img = Image.fromarray(img_numpy)
-    img.save('static/target-1.png')
-    return render_template('main.html')
+@app.route('/image-fusion.html')
+def image_fusion():
+    return render_template('image-fusion.html')
+
+
+@app.route('/style-transfer-process', methods=['post'])
+def style_transfer_process():
+    # print(request.form)
+    style = request.form['style']
+    source_pic = request.form['source'].split('.')[0]
+    source_ext = request.form['source'].split('.')[1]
+    style_dir = style.split(';')[0]
+    style_pic = style.split(';')[1].split('.')[0]
+    style_ext = style.split(';')[1].split('.')[1]
+    target_pic = source_pic + '-' + style_pic
+    target_ext = source_ext
+    source_path = 'static/content/' + source_pic + '.' + source_ext
+    img = Image.open(source_path)
+    img.save('static/source-style-transfer.png')
+    target_path = 'static/outputs4/' + target_pic + '-2.0.' + target_ext
+    img = Image.open(target_path)
+    img.save('static/target-style-transfer.png')
+    return render_template('style-transfer.html')
+
+
+@app.route('/image-fusion-process', methods=['post'])
+def image_fusion_process():
+    print(request.form)
+    return render_template('image-fusion.html')
 
 
 if __name__ == '__main__':
