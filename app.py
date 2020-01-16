@@ -1,6 +1,7 @@
 import getopt
 import os
 import sys
+from time import sleep
 
 from PIL import Image
 from flask import Flask, render_template, request
@@ -61,7 +62,7 @@ def style_transefer():
 
 @app.route('/style-transfer-process', methods=['post'])
 def style_transfer_process():
-	sleep(1)
+    sleep(1)
     style = request.form['style']
     source_pic = request.form['source'].split('.')[0]
     source_ext = request.form['source'].split('.')[1]
@@ -86,7 +87,7 @@ def segmentation():
 
 @app.route('/segmentation-process', methods=['post'])
 def segmentation_process():
-	sleep(1)
+    sleep(1)
     source_pic = request.form['source']
     target_pic = request.form['source'].split('_')[0] + '_pred.png'
     source_path = 'static/segmentation/raw/' + source_pic
@@ -105,7 +106,7 @@ def matting():
 
 @app.route('/matting-process', methods=['post'])
 def matting_process():
-	sleep(1)
+    sleep(1)
     source_pic = request.form['source']
     target_pic = request.form['source']
     source_path = 'static/matting/images/' + source_pic
@@ -127,7 +128,7 @@ def image_fusion():
 
 @app.route('/image-fusion-process', methods=['post'])
 def image_fusion_process():
-	sleep(1)
+    sleep(1)
     global sourceA_index, sourceB_index
     print(request.form)
     if request.form.get('image-fusion-source1') is not None and request.form["image-fusion-source1"] != '':
