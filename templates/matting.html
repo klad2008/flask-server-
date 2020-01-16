@@ -57,61 +57,6 @@
     }
 </style>
 
-<script type="text/javascript">
-function $(obj){
-  return document.getElementById(obj);
-}
-function show(objid){
-  $(objid).style.display='block';
-}
-function hidden(objid){
-  $(objid).style.display='none';
-}
-function doit(){
-  var sel_val=$('select_style_options').value;
-  if(sel_val==="drawings"){
-    show('div_style_options_drawings');
-    hidden('div_style_options_engraving');
-    hidden('div_style_options_iconography');
-    hidden('div_style_options_painting');
-    hidden('div_style_options_sculpture');
-  }
-  if(sel_val==="engraving"){
-    hidden('div_style_options_drawings');
-    show('div_style_options_engraving');
-    hidden('div_style_options_iconography');
-    hidden('div_style_options_painting');
-    hidden('div_style_options_sculpture');
-  }
-  if(sel_val==="iconography"){
-    hidden('div_style_options_drawings');
-    hidden('div_style_options_engraving');
-    show('div_style_options_iconography');
-    hidden('div_style_options_painting');
-    hidden('div_style_options_sculpture');
-  }
-  if(sel_val==="painting"){
-    hidden('div_style_options_drawings');
-    hidden('div_style_options_engraving');
-    hidden('div_style_options_iconography');
-    show('div_style_options_painting');
-    hidden('div_style_options_sculpture');
-  }
-  if(sel_val==="sculpture"){
-    hidden('div_style_options_drawings');
-    hidden('div_style_options_engraving');
-    hidden('div_style_options_iconography');
-    hidden('div_style_options_painting');
-    show('div_style_options_sculpture');
-  }
-
-}
-window.onload=function(){
-  var style_seleted=document.getElementById("select_style_options");
-  style_seleted.onchange=doit;
-}
-</script>
-
 <head>
     <meta charset="UTF-8">
     <title>test</title>
