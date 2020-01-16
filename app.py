@@ -17,7 +17,7 @@ def option_prepare(argv):
         if opt == "--host":
             args_dict_['host'] = arg
         elif opt == "--port":
-            args_dict_['port'] = arg
+            args_dict_['port'] = int(arg)
         elif opt == "--debug":
             args_dict_['debug'] = arg
         elif opt == "--options":
@@ -71,4 +71,5 @@ def process():
 
 if __name__ == '__main__':
     args_dict = option_prepare(sys.argv[1:])
+    print(args_dict)
     app.run(host=args_dict['host'], port=args_dict['port'])
