@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d0a3054e-865c-4d05-9a33-218cf5bbc613" name="Default Changelist" comment="" />
+    <list default="true" id="d0a3054e-865c-4d05-9a33-218cf5bbc613" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/server2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/server2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/source.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/source.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/style.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/target-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/target-1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,15 +47,15 @@
   </component>
   <component name="RunManager">
     <configuration name="server2" type="Python.FlaskServer">
-      <option name="additionalOptions" value="--host=127.0.0.1 --port=8000" />
+      <option name="additionalOptions" value="--host=0.0.0.0 --port=80" />
       <module name="server2" />
       <option name="target" value="$PROJECT_DIR$/app.py" />
       <option name="targetType" value="PATH" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="D:\server2\Scripts\python.exe" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -67,6 +75,8 @@
       <updated>1579055363005</updated>
       <workItem from="1579055364341" duration="5902000" />
       <workItem from="1579062765390" duration="402000" />
+      <workItem from="1579067441391" duration="1411000" />
+      <workItem from="1579130880259" duration="2111000" />
     </task>
     <servers />
   </component>
@@ -78,7 +88,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -86,5 +98,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/server2$server2.coverage" NAME="server2 Coverage Results" MODIFIED="1579061276003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/flask_server_$server2.coverage" NAME="server2 Coverage Results" MODIFIED="1579132938898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
