@@ -13,7 +13,7 @@
                 <input type="file" size="30" name="photo"/>
                 <input type="submit" class="button-new" style="margin-top:15px;"/>
                 </form>
-                <img src="{{ url_for('static', filename='source.png')}}"  alt="test"/>
+                <img src="{{ url_for('static', filename='source.png')}}" width="400px" height="300px" alt="test"/>
         </td>
         <td></td>
         <td></td>
@@ -23,13 +23,13 @@
                 <input type="file" size="30" name="photo"/>
                 <input type="submit" class="button-new" style="margin-top:15px;"/>
                 </form>
-                <img src="{{ url_for('static', filename='style.png')}}"  alt="test"/>
+                <img src="{{ url_for('static', filename='style.png')}}" width="400px" height="300px" alt="test"/>
         </td>
     </tr>
     <tr>
         <td></td>
         <td></td>
-        <td>
+        <td style="height:100px">
         <form action="process">
             <input type="submit" value="Start!" />
         </form>
@@ -38,11 +38,11 @@
         <td></td>
     </tr>
     <tr>
-        <td><img src="{{ url_for('static', filename='target-1.png')}}"  alt="test"/></td>
-        <td><img src="{{ url_for('static', filename='target-2.png')}}"  alt="test"/></td>
-        <td><img src="{{ url_for('static', filename='target-3.png')}}"  alt="test"/></td>
-        <td><img src="{{ url_for('static', filename='target-4.png')}}"  alt="test"/></td>
-        <td><img src="{{ url_for('static', filename='target-5.png')}}"  alt="test"/></td>
+        <td><img src="{{ url_for('static', filename='target-1.png')}}" width="400px" height="300px" alt="test"/></td>
+        <td><img src="{{ url_for('static', filename='target-2.png')}}" width="400px" height="300px" alt="test"/></td>
+        <td><img src="{{ url_for('static', filename='target-3.png')}}" width="400px" height="300px" alt="test"/></td>
+        <td><img src="{{ url_for('static', filename='target-4.png')}}" width="400px" height="300px" alt="test"/></td>
+        <td><img src="{{ url_for('static', filename='target-5.png')}}" width="400px" height="300px" alt="test"/></td>
     </tr>
 </table>
 
