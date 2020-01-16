@@ -19,6 +19,7 @@
     #div_module_table{
         text-align:center;
         font-size:30px;
+        line-height:100px;
     }
     #div_module_selected{
         margin: 100px 100px;
@@ -51,12 +52,12 @@
         height:210px
     }
     #img_source_selected{
-        margin: 0 100px;
+        margin: 0 50px;
         width:450px;
         height:600px
     }
     #img_target_selected{
-        margin: 0 100px;
+        margin: 0 50px;
         width:450px;
         height:600px
     }
@@ -82,6 +83,7 @@
 <form style="text-align:center" action="matting-process" method="post">
     <div id="div_pic_table">
         <img id="img_source_selected" src="{{ url_for('static', filename='source-matting.png')}}" alt="test"/>
+        <img id="img_target_selected" src="{{ url_for('static', filename='trimap-matting.png')}}" alt="test"/>
         <img id="img_target_selected" src="{{ url_for('static', filename='target-matting.png')}}" alt="test"/>
         <br>
         <input type="file" onchange="this.form.submit()" name="source">

@@ -9,16 +9,16 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 sourceA_index = '1'
-sourceA_path = 'static/image_fusion/animalsA/1.jpg'
-img = Image.open(sourceA_path)
-img.save('static/source-image-fusion-1.jpg')
+_sourceA_path = 'static/image_fusion/animalsA/1.jpg'
+_img = Image.open(_sourceA_path)
+_img.save('static/source-image-fusion-1.jpg')
 sourceB_index = '1'
-sourceB_path = 'static/image_fusion/animalsB/1.jpg'
-img = Image.open(sourceB_path)
-img.save('static/source-image-fusion-2.jpg')
-target_path = 'static/image_fusion/animalsC/1-1.jpg'
-img = Image.open(target_path)
-img.save('static/target-image-fusion-1-2.jpg')
+_sourceB_path = 'static/image_fusion/animalsB/1.jpg'
+_img = Image.open(_sourceB_path)
+_img.save('static/source-image-fusion-2.jpg')
+_targetAB_path = 'static/image_fusion/animalsC/1-1.jpg'
+_img = Image.open(_targetAB_path)
+_img.save('static/target-image-fusion-1-2.jpg')
 
 
 def option_prepare(argv):
@@ -59,24 +59,8 @@ def style_transefer():
     return render_template('style-transfer.html')
 
 
-@app.route('/segmentation.html')
-def segmentation():
-    return render_template('segmentation.html')
-
-
-@app.route('/matting.html')
-def matting():
-    return render_template('matting.html')
-
-
-@app.route('/image-fusion.html')
-def image_fusion():
-    return render_template('image-fusion.html')
-
-
 @app.route('/style-transfer-process', methods=['post'])
 def style_transfer_process():
-    # print(request.form)
     style = request.form['style']
     source_pic = request.form['source'].split('.')[0]
     source_ext = request.form['source'].split('.')[1]
@@ -92,6 +76,50 @@ def style_transfer_process():
     img = Image.open(target_path)
     img.save('static/target-style-transfer.png')
     return render_template('style-transfer.html')
+
+
+@app.route('/segmentation.html')
+def segmentation():
+    return render_template('segmentation.html')
+
+
+@app.route('/segmentation-process', methods=['post'])
+def segmentation_process():
+    source_pic = request.form['source']
+    target_pic = request.form['source'].split('_')[0] + '_pred.png'
+    source_path = 'static/segmentation/raw/' + source_pic
+    img = Image.open(source_path)
+    img.save('static/source-segmentation.png')
+    target_path = 'static/segmentation/pred/' + target_pic
+    img = Image.open(target_path)
+    img.save('static/target-segmentation.png')
+    return render_template('segmentation.html')
+
+
+@app.route('/matting.html')
+def matting():
+    return render_template('matting.html')
+
+
+@app.route('/matting-process', methods=['post'])
+def matting_process():
+    source_pic = request.form['source']
+    target_pic = request.form['source']
+    source_path = 'static/matting/images/' + source_pic
+    img = Image.open(source_path)
+    img.save('static/source-matting.png')
+    matting_path = 'static/matting/mattes/' + target_pic
+    img = Image.open(matting_path)
+    img.save('static/trimap-matting.png')
+    target_path = 'static/matting/colors/' + target_pic
+    img = Image.open(target_path)
+    img.save('static/target-matting.png')
+    return render_template('matting.html')
+
+
+@app.route('/image-fusion.html')
+def image_fusion():
+    return render_template('image-fusion.html')
 
 
 @app.route('/image-fusion-process', methods=['post'])
@@ -112,8 +140,8 @@ def image_fusion_process():
         img.save('static/source-image-fusion-2.jpg')
     if request.form.get('fusion') is not None and request.form.get('fusion') != '':
         target_pic = sourceA_index + '-' + sourceB_index + '.jpg'
-        target_path = 'static/image_fusion/animalsC/' + target_pic
-        img = Image.open(target_path)
+        targetAB_path = 'static/image_fusion/animalsC/' + target_pic
+        img = Image.open(targetAB_path)
         img.save('static/target-image-fusion-1-2.jpg')
     print('okk')
     return render_template('image-fusion.html')
