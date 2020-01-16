@@ -80,10 +80,11 @@
 <form style="text-align:center" action="image-fusion-process" method="post">
     <table id="div_pic_table">
         <tr>
-            <td></td>
             <td>
                 <img id="img_imgfusion_pic_selected" src="{{ url_for('static', filename='source-image-fusion-1.jpg')}}" alt="test"/>
                 <input type="file" onchange="this.form.submit()" name="image-fusion-source1">
+            </td>
+            <td>
             </td>
         </tr>
         <tr>
@@ -93,7 +94,7 @@
             </td>
             <td>
                 <img id="img_imgfusion_pic_selected" src="{{ url_for('static', filename='target-image-fusion-1-2.jpg')}}" alt="test"/>
-                <input type="file" onchange="this.form.submit()" name="image-fusion-target">
+                <input type="submit" value="Fusion!" name="fusion">
             </td>
         </tr>
     </table>
